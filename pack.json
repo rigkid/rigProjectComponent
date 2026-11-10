@@ -1,0 +1,13 @@
+{
+  "name": "rigProjectComponent",
+  "url": "https://github.com/rigkid/rigProjectComponent.git",
+  "ref": "main",
+  "version": "0.1.0",
+  "author": "Rigkid",
+  "license": "MIT Rigkid Contributors",
+  "description": "Project envelope PODs (CProject, CPage, FaceInsets). Document IO lives in rigProject.",
+  "dependencies": [],
+  "include_paths": [
+    "src"
+  ]
+}
