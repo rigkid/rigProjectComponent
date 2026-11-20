@@ -13,6 +13,8 @@ namespace ecs {
  * object (and Contract `document` keys), not as a normal entity component blob.
  * `colorSpace` speaks `document.colorSpace` (default `srgb`).
  * `pdfX` / `outputCondition` / `trapped` / `outputProfile` drive PDF/X emit.
+ * `untaggedRgbProfile` / `renderingIntent` are portable colour-conversion policy
+ * (Rig document fields); `outputProfile` stays a host ICC path.
  */
 struct CProject {
 	std::string title = "Untitled";
@@ -25,14 +27,16 @@ struct CProject {
 	int formatMajor = 1;
 	int formatMinor = 1;
 	int activePageIndex = 0;
-	std::string defaultUnit = "px"; // px | mm | in
+	std::string defaultUnit = "px";	 // px | mm | in
 	std::string colorSpace = "srgb"; ///< Speaks document.colorSpace; rgba/rgb meaning
 	std::string language; ///< Speaks document.language (BCP 47, e.g. en-GB); empty = host default
-	std::string pdfX; ///< e.g. PDF/X-4; empty = not PDF/X
+	std::string pdfX;	  ///< e.g. PDF/X-4; empty = not PDF/X
 	std::string outputCondition; ///< OutputConditionIdentifier (FOGRA39, ...)
 	std::string outputRegistry = "http://www.color.org";
-	std::string outputProfile; ///< Host path to ICC for DestOutputProfile
-	std::string trapped = "unknown"; ///< unknown | true | false
+	std::string outputProfile;				 ///< Host path to ICC for DestOutputProfile
+	std::string trapped = "unknown";		 ///< unknown | true | false
+	std::string untaggedRgbProfile = "srgb"; ///< Well-known RGB token for untagged raster
+	std::string renderingIntent = "relative-colorimetric"; ///< ICC intent kebab literal
 	bool dirty = false;
 
 	std::vector<sProp> GetProperties() {
@@ -52,7 +56,9 @@ struct CProject {
 				{13, "Output Registry", EPT_STRING, &outputRegistry},
 				{14, "Output Profile", EPT_STRING, &outputProfile},
 				{15, "Trapped", EPT_STRING, &trapped},
-				{16, "Dirty", EPT_BOOL, &dirty}};
+				{16, "Untagged RGB Profile", EPT_STRING, &untaggedRgbProfile},
+				{17, "Rendering Intent", EPT_STRING, &renderingIntent},
+				{18, "Dirty", EPT_BOOL, &dirty}};
 	}
 };
 
