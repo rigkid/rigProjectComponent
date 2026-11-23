@@ -42,6 +42,8 @@ struct CPage {
 	float slugLeft = 0.0f;
 	float slugFloor = 0.0f;
 	float slugCeiling = 0.0f;
+	/// When true with facing on, this page and the next stay in the same spread.
+	bool keepWithNext = false;
 
 	std::vector<sProp> GetProperties() {
 		return {{0, "Name", EPT_STRING, &name},
@@ -54,7 +56,8 @@ struct CPage {
 				{7, "Margin Bottom", EPT_FLOAT, &marginBottom},
 				{8, "Margin Left", EPT_FLOAT, &marginLeft},
 				{9, "Margin Floor", EPT_FLOAT, &marginFloor},
-				{10, "Margin Ceiling", EPT_FLOAT, &marginCeiling}};
+				{10, "Margin Ceiling", EPT_FLOAT, &marginCeiling},
+				{11, "Keep With Next", EPT_BOOL, &keepWithNext}};
 	}
 };
 
