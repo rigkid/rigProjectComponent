@@ -8,9 +8,9 @@ namespace rigkit {
 namespace ecs {
 
 /**
- * @brief Project envelope - data only.
- * @details Singleton metadata entity. Serialized into the root `project`
- * object (and Contract `document` keys), not as a normal entity component blob.
+ * @brief Document envelope fields. Data only.
+ * @details Lives on the entity `project::bindDocument` names for this registry.
+ * Save writes these fields into the file's `document` object.
  * `colorSpace` speaks `document.colorSpace` (default `srgb`).
  * `pdfX` / `outputCondition` / `trapped` / `outputProfile` drive PDF/X emit.
  * `untaggedRgbProfile` / `renderingIntent` are portable colour-conversion policy

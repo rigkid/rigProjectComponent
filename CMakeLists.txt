@@ -6,8 +6,7 @@ add_library(${PACK_NAME} STATIC
 	src/rigProjectComponent.h
 	src/CProject.h
 	src/CPage.h
-	src/CBookBinding.h
-	src/CBookPublication.h
+	src/DocumentEnvelope.h
 	src/FaceInsets.h
 )
 target_link_libraries(${PACK_NAME} PUBLIC rigkit)

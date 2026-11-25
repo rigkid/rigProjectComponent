@@ -3,8 +3,6 @@
 #include "core/RigKitEngine.h"
 #include "core/pack/PackRegistry.h"
 #include "ecs/MEcs.h"
-#include "CBookBinding.h"
-#include "CBookPublication.h"
 #include "CPage.h"
 #include "CProject.h"
 
@@ -27,9 +25,7 @@ void rigProjectComponent::setup() {
 	if (auto* ecs = engine->getECSManager()) {
 		ecs->registerComponent<ecs::CProject>("Project", true);
 		ecs->registerComponent<ecs::CPage>("Page", true);
-		ecs->registerComponent<ecs::CBookBinding>("BookBinding", true);
-		ecs->registerComponent<ecs::CBookPublication>("BookPublication", true);
-		spdlog::info("[rigProjectComponent] registered CProject/CPage/BookBinding/BookPublication");
+		spdlog::info("[rigProjectComponent] registered CProject/CPage");
 	}
 }
 
